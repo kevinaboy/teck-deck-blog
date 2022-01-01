@@ -97,14 +97,43 @@ const sequelize = require('../config/connection');
 
 //   res.render('login');
 // });
+router.post('/login', (req, res) => {
+  req.session.save(() => {
+    req.session.loggedIn = true;
+    res.json({ message: 'You are now logged in!' });
+  });
+})
+
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
 
 router.get('/myRoute', (req, res) => {
+
+  const articles = [
+    {
+      title: "First article"
+    },
+    {
+      title: "Second article"
+    }
+  ]
 
 
   // res.render('login');
   // res.send("Hello world!")
-  res.render('myPage', {
-    message: "This is my message"
+  res.render('test', {
+    layout: 'sample', //defaults to main unless you specify a layout
+    // message: "This is my message"
+    articles: articles,
+    loggedIn: req.session.loggedIn
   })
 });
 

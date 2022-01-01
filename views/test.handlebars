@@ -1,0 +1,22 @@
+{{#if loggedIn}}
+<h1>You are logged in!</h1>
+
+<h2>This is another test.</h2>
+
+{{#each articles as |data|}}
+{{> article data}}
+{{/each}}
+{{else}}
+<h1>You are logged out!</h1>
+{{/if}}
+
+
+
+<button id="loginBtn">Login!</button>
+
+<button id="logoutBtn">Logout!</button>
+
+
+
+
+<script src="./js/test.js"></script>
