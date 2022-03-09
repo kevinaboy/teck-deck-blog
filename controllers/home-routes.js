@@ -119,10 +119,13 @@ router.get('/myRoute', (req, res) => {
 
   const articles = [
     {
-      title: "First article"
+      title: "Why MVC is so important"
     },
     {
-      title: "Second article"
+      title: "Authentication vs. Authorization"
+    },
+    {
+      title: "Object-Relational Mapping"
     }
   ]
 
